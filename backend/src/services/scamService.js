@@ -1,4 +1,4 @@
-import NumberModel from "../models/Number.js";
+import NumberModel from "../models/number.js";
 import ScanModel from "../models/Scan.js";
 
 /**
