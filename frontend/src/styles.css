@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0f172a;
+    color: white;
+}
+
+.container {
+    padding: 20px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* SEARCH */
+.searchBox {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.searchBox input {
+    padding: 10px;
+    flex: 1;
+}
+
+.btn {
+    padding: 10px 15px;
+    background: green;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.btn.red {
+    background: red;
+}
+
+/* CARD */
+.card {
+    background: #1e293b;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+/* STATS */
+.stats {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.statBox {
+    flex: 1;
+    background: #334155;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* HISTORY */
+.history {
+    margin-top: 30px;
+}
+
+.historyItem {
+    background: #334155;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
