@@ -33,8 +33,9 @@ export default function Dashboard() {
             const res = await api.post("/check", { phoneNumber: phone });
             setResult(res.data);
             loadHistory();
+
         } catch (err) {
-            console.error(err);
+            console.error("Check error:", err);
         } finally {
             setLoading(false);
             setScanText("");
@@ -42,8 +43,12 @@ export default function Dashboard() {
     };
 
     const reportNumber = async (phone) => {
-        await api.post("/report", { phoneNumber: phone });
-        alert("⚠️ Report submitted to AI system");
+        try {
+            await api.post("/report", { phoneNumber: phone });
+            alert("⚠️ Report submitted");
+        } catch (err) {
+            alert("Failed to report");
+        }
     };
 
     const loadHistory = async () => {
@@ -51,7 +56,7 @@ export default function Dashboard() {
             const res = await api.get("/history");
             setHistory(res.data);
         } catch (err) {
-            console.error(err);
+            console.error("History error:", err);
         }
     };
 
@@ -67,14 +72,14 @@ export default function Dashboard() {
                 🛡️ SCAM DETECTOR AI SYSTEM
             </div>
 
-            {/* SEARCH BOX */}
+            {/* SEARCH */}
             <div className="card">
                 <SearchBox
                     onSearch={checkNumber}
                     onReport={reportNumber}
                 />
 
-                {/* LOADING ANIMATION */}
+                {/* LOADING */}
                 {loading && (
                     <div className="scanBox">
                         <div className="scanner"></div>
@@ -83,25 +88,19 @@ export default function Dashboard() {
                 )}
             </div>
 
-            {/* RESULT SECTION */}
+            {/* RESULT */}
             {result && (
                 <div className="card aiResult">
 
                     <div className="aiHeader">
                         <h2>🧠 AI Security Analysis</h2>
 
-                        <div
-                            className={`statusBadge ${
-                                result.scam ? "danger" : "safe"
-                            }`}
-                        >
-                            {result.scam
-                                ? "⚠ SCAM DETECTED"
-                                : "✔ SAFE NUMBER"}
+                        <div className={`statusBadge ${result.scam ? "danger" : "safe"}`}>
+                            {result.scam ? "⚠ SCAM DETECTED" : "✔ SAFE NUMBER"}
                         </div>
                     </div>
 
-                    {/* SCAM SCORE GAUGE */}
+                    {/* GAUGE */}
                     <div className="gaugeWrapper">
                         <div
                             className="gauge"
