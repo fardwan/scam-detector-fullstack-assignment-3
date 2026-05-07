@@ -1,20 +1,44 @@
+/* =========================
+   GLOBAL CYBER UI THEME
+========================= */
+
 body {
     margin: 0;
-    font-family: Arial;
-    background: #0f172a;
-    color: white;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: radial-gradient(circle at top, #0b1220, #05070f, #000);
+    color: #ffffff;
 }
 
-.container {
-    padding: 20px;
+/* APP */
+.app-bg {
+    min-height: 100vh;
 }
+
+/* MAIN WRAPPER */
+.container {
+    padding: 25px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* =========================
+   TITLE
+========================= */
 
 .title {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    font-size: 26px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #00f5ff, #7c4dff, #00ff88);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* SEARCH */
+/* =========================
+   SEARCH BOX
+========================= */
+
 .searchBox {
     display: flex;
     gap: 10px;
@@ -22,31 +46,56 @@ body {
 }
 
 .searchBox input {
-    padding: 10px;
     flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05);
+    color: white;
+    outline: none;
 }
 
+.searchBox input:focus {
+    border: 1px solid #00f5ff;
+    box-shadow: 0 0 10px #00f5ff55;
+}
+
+/* BUTTON */
 .btn {
     padding: 10px 15px;
-    background: green;
     border: none;
+    border-radius: 10px;
     color: white;
     cursor: pointer;
+    transition: 0.2s;
+    background: linear-gradient(135deg, #00f5ff, #7c4dff);
+}
+
+.btn:hover {
+    transform: scale(1.05);
 }
 
 .btn.red {
-    background: red;
+    background: linear-gradient(135deg, #ff3b3b, #ff6b6b);
 }
 
-/* CARD */
+/* =========================
+   CARD SYSTEM
+========================= */
+
 .card {
-    background: #1e293b;
-    padding: 15px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(14px);
+    padding: 18px;
     margin-top: 20px;
-    border-radius: 10px;
+    border-radius: 14px;
 }
 
-/* STATS */
+/* =========================
+   STATS
+========================= */
+
 .stats {
     display: flex;
     gap: 10px;
@@ -55,20 +104,145 @@ body {
 
 .statBox {
     flex: 1;
-    background: #334155;
-    padding: 10px;
-    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 12px;
+    border-radius: 12px;
     text-align: center;
 }
 
-/* HISTORY */
+/* =========================
+   HISTORY
+========================= */
+
 .history {
     margin-top: 30px;
 }
 
 .historyItem {
-    background: #334155;
-    padding: 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 12px;
     margin-bottom: 10px;
-    border-radius: 8px;
+    border-radius: 10px;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes pulse {
+    0% { opacity: 0.4; }
+    50% { opacity: 1; }
+    100% { opacity: 0.4; }
+}
+
+/* =========================
+   SCANNER
+========================= */
+
+.scanBox {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.scanner {
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #00f5ff, transparent);
+    animation: scanMove 1s infinite;
+}
+
+@keyframes scanMove {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.scanText {
+    margin-top: 10px;
+    color: #00f5ff;
+    font-size: 14px;
+    animation: pulse 1s infinite;
+}
+
+/* =========================
+   AI RESULT PANEL
+========================= */
+
+.aiResult {
+    border: 1px solid rgba(0,245,255,0.2);
+}
+
+/* HEADER */
+.aiHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* H2 (ONLY AI SECTION SAFE) */
+.aiResult h2 {
+    color: #00f5ff;
+    font-size: 18px;
+}
+
+/* STATUS BADGE */
+.statusBadge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    animation: pulse 1.5s infinite;
+}
+
+.statusBadge.safe {
+    background: rgba(0,255,136,0.15);
+    color: #00ff88;
+    border: 1px solid #00ff88;
+}
+
+.statusBadge.danger {
+    background: rgba(255,0,0,0.15);
+    color: #ff4d4d;
+    border: 1px solid #ff4d4d;
+}
+
+/* =========================
+   GAUGE
+========================= */
+
+.gaugeWrapper {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.gauge {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: conic-gradient(
+            #00ff88 calc(var(--value) * 1%),
+            #1e293b 0
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.gauge::before {
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background: #0f172a;
+    border-radius: 50%;
+}
+
+.gaugeText {
+    position: relative;
+    font-size: 18px;
+    font-weight: bold;
+    color: #00f5ff;
 }
