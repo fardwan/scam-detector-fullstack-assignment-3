@@ -30,13 +30,12 @@ export default function Dashboard() {
     };
 
     /**
-     * 🗑️ DELETE ACCOUNT (FIXED SAFE VERSION)
+     * 🗑️ DELETE ACCOUNT
      */
     const handleDeleteAccount = async () => {
         try {
             const user = JSON.parse(localStorage.getItem("user") || "{}");
 
-            // support both id formats
             const userId = user.id || user._id;
 
             if (!userId) {
@@ -56,14 +55,13 @@ export default function Dashboard() {
 
             alert("Account deleted successfully");
 
-            // clear session
             localStorage.removeItem("token");
             localStorage.removeItem("user");
 
             window.location.href = "/login";
 
         } catch (err) {
-            console.error("Delete error:", err);
+            console.log("DELETE ERROR:", err.response?.data || err.message);
             alert("Failed to delete account");
         }
     };
