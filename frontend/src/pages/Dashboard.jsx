@@ -50,7 +50,7 @@ export default function Dashboard() {
             if (!confirmDelete) return;
 
             // ✔ IMPORTANT FIX: NO /api HERE
-            await api.delete("/delete", {
+            await api.delete("/auth/delete", {
                 data: { userId }
             });
 
@@ -80,7 +80,7 @@ export default function Dashboard() {
                 await new Promise((r) => setTimeout(r, 500));
             }
 
-            const res = await api.post("/check", { phoneNumber: phone });
+            const res = await api.post("/scam/check", { phoneNumber: phone });
             setResult(res.data);
             loadHistory();
 
@@ -97,7 +97,7 @@ export default function Dashboard() {
      */
     const reportNumber = async (phone) => {
         try {
-            await api.post("/report", { phoneNumber: phone });
+            await api.post("/scam/report", { phoneNumber: phone });
             alert("Report submitted");
         } catch (err) {
             alert("Failed to report");
@@ -109,7 +109,7 @@ export default function Dashboard() {
      */
     const loadHistory = async () => {
         try {
-            const res = await api.get("/history");
+            const res = await api.get("/scam/history");
             setHistory(res.data);
         } catch (err) {
             console.error("History error:", err);
