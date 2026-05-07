@@ -30,13 +30,16 @@ export default function Dashboard() {
     };
 
     /**
-     * 🗑️ DELETE ACCOUNT
+     * 🗑️ DELETE ACCOUNT (FIXED SAFE VERSION)
      */
     const handleDeleteAccount = async () => {
         try {
-            const user = JSON.parse(localStorage.getItem("user"));
+            const user = JSON.parse(localStorage.getItem("user") || "{}");
 
-            if (!user?.id) {
+            // support both id formats
+            const userId = user.id || user._id;
+
+            if (!userId) {
                 alert("User session not found");
                 return;
             }
@@ -48,7 +51,7 @@ export default function Dashboard() {
             if (!confirmDelete) return;
 
             await api.delete("/auth/delete", {
-                data: { userId: user.id }
+                data: { userId }
             });
 
             alert("Account deleted successfully");
@@ -60,7 +63,7 @@ export default function Dashboard() {
             window.location.href = "/login";
 
         } catch (err) {
-            console.error(err);
+            console.error("Delete error:", err);
             alert("Failed to delete account");
         }
     };
