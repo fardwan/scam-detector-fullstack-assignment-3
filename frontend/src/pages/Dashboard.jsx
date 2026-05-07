@@ -50,7 +50,7 @@ export default function Dashboard() {
 
             if (!confirmDelete) return;
 
-            await api.delete("/auth/delete", {
+            await api.delete("/api/auth/delete", {
                 data: { userId }
             });
 
