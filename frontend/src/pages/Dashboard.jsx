@@ -20,33 +20,33 @@ export default function Dashboard() {
         "Finalizing AI verdict..."
     ];
 
-    // =========================
-    // LOGOUT
-    // =========================
+    /**
+     * 🔓 LOGOUT
+     */
     const handleLogout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
         window.location.href = "/login";
     };
 
-    // =========================
-    // DELETE ACCOUNT (NEW)
-    // =========================
+    /**
+     * 🗑️ DELETE ACCOUNT
+     */
     const handleDeleteAccount = async () => {
-        const user = JSON.parse(localStorage.getItem("user"));
-
-        if (!user?.id) {
-            alert("User not found");
-            return;
-        }
-
-        const confirmDelete = window.confirm(
-            "⚠️ Are you sure you want to delete your account? This cannot be undone."
-        );
-
-        if (!confirmDelete) return;
-
         try {
+            const user = JSON.parse(localStorage.getItem("user"));
+
+            if (!user?.id) {
+                alert("User session not found");
+                return;
+            }
+
+            const confirmDelete = window.confirm(
+                "⚠️ This action is permanent. Delete account?"
+            );
+
+            if (!confirmDelete) return;
+
             await api.delete("/auth/delete", {
                 data: { userId: user.id }
             });
@@ -65,6 +65,9 @@ export default function Dashboard() {
         }
     };
 
+    /**
+     * 🔍 SCAN NUMBER
+     */
     const checkNumber = async (phone) => {
         try {
             setLoading(true);
@@ -87,15 +90,21 @@ export default function Dashboard() {
         }
     };
 
+    /**
+     * ⚠️ REPORT NUMBER
+     */
     const reportNumber = async (phone) => {
         try {
             await api.post("/report", { phoneNumber: phone });
-            alert("⚠️ Report submitted");
+            alert("Report submitted");
         } catch (err) {
             alert("Failed to report");
         }
     };
 
+    /**
+     * 📜 LOAD HISTORY
+     */
     const loadHistory = async () => {
         try {
             const res = await api.get("/history");
