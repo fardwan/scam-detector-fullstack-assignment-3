@@ -9,14 +9,12 @@ export const register = async (req, res) => {
     try {
         const { name, email, password } = req.body;
 
-        // validation
         if (!name || !email || !password) {
             return res.status(400).json({
                 message: "All fields are required",
             });
         }
 
-        // check existing user
         const existingUser = await User.findOne({ email });
 
         if (existingUser) {
@@ -25,10 +23,8 @@ export const register = async (req, res) => {
             });
         }
 
-        // hash password
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // create user
         const user = await User.create({
             name,
             email,
@@ -36,7 +32,6 @@ export const register = async (req, res) => {
             role: "user",
         });
 
-        // create token
         const token = jwt.sign(
             {
                 id: user._id,
@@ -73,14 +68,12 @@ export const login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // validation
         if (!email || !password) {
             return res.status(400).json({
                 message: "Email and password required",
             });
         }
 
-        // find user
         const user = await User.findOne({ email });
 
         if (!user) {
@@ -89,7 +82,6 @@ export const login = async (req, res) => {
             });
         }
 
-        // compare password
         const validPassword = await bcrypt.compare(
             password,
             user.password
@@ -101,7 +93,6 @@ export const login = async (req, res) => {
             });
         }
 
-        // generate token
         const token = jwt.sign(
             {
                 id: user._id,
@@ -122,6 +113,38 @@ export const login = async (req, res) => {
                 email: user.email,
                 role: user.role,
             },
+        });
+
+    } catch (err) {
+        res.status(500).json({
+            message: err.message,
+        });
+    }
+};
+
+/**
+ * 🗑️ DELETE ACCOUNT (NEW)
+ */
+export const deleteAccount = async (req, res) => {
+    try {
+        const { userId } = req.body;
+
+        if (!userId) {
+            return res.status(400).json({
+                message: "User ID required",
+            });
+        }
+
+        const user = await User.findByIdAndDelete(userId);
+
+        if (!user) {
+            return res.status(404).json({
+                message: "User not found",
+            });
+        }
+
+        res.json({
+            message: "Account deleted successfully",
         });
 
     } catch (err) {

@@ -20,6 +20,51 @@ export default function Dashboard() {
         "Finalizing AI verdict..."
     ];
 
+    // =========================
+    // LOGOUT
+    // =========================
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        window.location.href = "/login";
+    };
+
+    // =========================
+    // DELETE ACCOUNT (NEW)
+    // =========================
+    const handleDeleteAccount = async () => {
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        if (!user?.id) {
+            alert("User not found");
+            return;
+        }
+
+        const confirmDelete = window.confirm(
+            "⚠️ Are you sure you want to delete your account? This cannot be undone."
+        );
+
+        if (!confirmDelete) return;
+
+        try {
+            await api.delete("/auth/delete", {
+                data: { userId: user.id }
+            });
+
+            alert("Account deleted successfully");
+
+            // clear session
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+
+            window.location.href = "/login";
+
+        } catch (err) {
+            console.error(err);
+            alert("Failed to delete account");
+        }
+    };
+
     const checkNumber = async (phone) => {
         try {
             setLoading(true);
@@ -68,8 +113,26 @@ export default function Dashboard() {
         <div className="container">
 
             {/* HEADER */}
-            <div className="title">
-                🛡️ SCAM DETECTOR AI SYSTEM
+            <div className="aiHeader" style={{ marginBottom: "20px" }}>
+                <div className="title">
+                    🛡️ SCAM DETECTOR AI SYSTEM
+                </div>
+
+                <div style={{ display: "flex", gap: "10px" }}>
+                    <button className="btn red" onClick={handleLogout}>
+                        Logout
+                    </button>
+
+                    <button
+                        className="btn"
+                        onClick={handleDeleteAccount}
+                        style={{
+                            background: "linear-gradient(135deg,#ff3b3b,#990000)"
+                        }}
+                    >
+                        Delete Account
+                    </button>
+                </div>
             </div>
 
             {/* SEARCH */}
@@ -79,7 +142,6 @@ export default function Dashboard() {
                     onReport={reportNumber}
                 />
 
-                {/* LOADING */}
                 {loading && (
                     <div className="scanBox">
                         <div className="scanner"></div>
@@ -100,7 +162,6 @@ export default function Dashboard() {
                         </div>
                     </div>
 
-                    {/* GAUGE */}
                     <div className="gaugeWrapper">
                         <div
                             className="gauge"
