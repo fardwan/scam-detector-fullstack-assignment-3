@@ -123,7 +123,7 @@ export const login = async (req, res) => {
 };
 
 /**
- * 🗑️ DELETE ACCOUNT (NEW)
+ * 🗑️ DELETE ACCOUNT (SAFE VERSION)
  */
 export const deleteAccount = async (req, res) => {
     try {
@@ -135,9 +135,9 @@ export const deleteAccount = async (req, res) => {
             });
         }
 
-        const user = await User.findByIdAndDelete(userId);
+        const deletedUser = await User.findByIdAndDelete(userId);
 
-        if (!user) {
+        if (!deletedUser) {
             return res.status(404).json({
                 message: "User not found",
             });
