@@ -1,5 +1,5 @@
 import NumberModel from "../models/number.js";
-import ScanModel from "../models/Scan.js";
+import ScanModel from "../models/scan.js";
 
 /**
  * AI SCORING ENGINE
