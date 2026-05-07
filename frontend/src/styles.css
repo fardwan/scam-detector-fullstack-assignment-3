@@ -5,16 +5,24 @@
 body {
     margin: 0;
     font-family: "Segoe UI", Arial, sans-serif;
-    background: radial-gradient(circle at top, #0b1220, #05070f, #000);
+    background:
+            radial-gradient(
+                    circle at top,
+                    #0b1220,
+                    #05070f,
+                    #000
+            );
     color: #ffffff;
 }
 
 /* APP */
+
 .app-bg {
     min-height: 100vh;
 }
 
 /* MAIN WRAPPER */
+
 .container {
     padding: 25px;
     max-width: 1000px;
@@ -26,12 +34,27 @@ body {
 ========================= */
 
 .title {
+
     text-align: center;
+
     margin-bottom: 25px;
-    font-size: 26px;
+
+    font-size: 30px;
+
     font-weight: bold;
-    background: linear-gradient(90deg, #00f5ff, #7c4dff, #00ff88);
+
+    letter-spacing: 1px;
+
+    background:
+            linear-gradient(
+                    90deg,
+                    #00f5ff,
+                    #7c4dff,
+                    #00ff88
+            );
+
     -webkit-background-clip: text;
+
     -webkit-text-fill-color: transparent;
 }
 
@@ -40,43 +63,90 @@ body {
 ========================= */
 
 .searchBox {
+
     display: flex;
+
     gap: 10px;
+
     margin-bottom: 20px;
 }
 
 .searchBox input {
+
     flex: 1;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(255,255,255,0.05);
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    border:
+            1px solid rgba(255,255,255,0.1);
+
+    background:
+            rgba(255,255,255,0.05);
+
     color: white;
+
     outline: none;
+
+    font-size: 14px;
+
+    transition: 0.2s ease;
 }
 
 .searchBox input:focus {
-    border: 1px solid #00f5ff;
-    box-shadow: 0 0 10px #00f5ff55;
+
+    border:
+            1px solid #00f5ff;
+
+    box-shadow:
+            0 0 12px rgba(0,245,255,0.3);
 }
 
-/* BUTTON */
+/* =========================
+   BUTTONS
+========================= */
+
 .btn {
-    padding: 10px 15px;
+
+    padding: 12px 18px;
+
     border: none;
-    border-radius: 10px;
+
+    border-radius: 12px;
+
     color: white;
+
     cursor: pointer;
-    transition: 0.2s;
-    background: linear-gradient(135deg, #00f5ff, #7c4dff);
+
+    font-weight: bold;
+
+    transition: 0.2s ease;
+
+    background:
+            linear-gradient(
+                    135deg,
+                    #00f5ff,
+                    #7c4dff
+            );
 }
 
 .btn:hover {
+
     transform: scale(1.05);
+
+    box-shadow:
+            0 0 15px rgba(0,245,255,0.3);
 }
 
 .btn.red {
-    background: linear-gradient(135deg, #ff3b3b, #ff6b6b);
+
+    background:
+            linear-gradient(
+                    135deg,
+                    #ff3b3b,
+                    #ff6b6b
+            );
 }
 
 /* =========================
@@ -84,12 +154,24 @@ body {
 ========================= */
 
 .card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    backdrop-filter: blur(14px);
-    padding: 18px;
+
+    background:
+            rgba(255,255,255,0.05);
+
+    border:
+            1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter:
+            blur(14px);
+
+    padding: 20px;
+
     margin-top: 20px;
-    border-radius: 14px;
+
+    border-radius: 18px;
+
+    box-shadow:
+            0 0 20px rgba(0,0,0,0.3);
 }
 
 /* =========================
@@ -97,18 +179,39 @@ body {
 ========================= */
 
 .stats {
+
     display: flex;
-    gap: 10px;
+
+    gap: 12px;
+
     margin-top: 10px;
 }
 
 .statBox {
+
     flex: 1;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    padding: 12px;
-    border-radius: 12px;
+
+    background:
+            rgba(255,255,255,0.05);
+
+    border:
+            1px solid rgba(255,255,255,0.08);
+
+    padding: 14px;
+
+    border-radius: 14px;
+
     text-align: center;
+
+    transition: 0.2s ease;
+}
+
+.statBox:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+            0 0 15px rgba(0,245,255,0.15);
 }
 
 /* =========================
@@ -120,11 +223,28 @@ body {
 }
 
 .historyItem {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
+
+    background:
+            rgba(255,255,255,0.05);
+
+    border:
+            1px solid rgba(255,255,255,0.08);
+
     padding: 12px;
+
     margin-bottom: 10px;
-    border-radius: 10px;
+
+    border-radius: 12px;
+
+    transition: 0.2s ease;
+}
+
+.historyItem:hover {
+
+    transform: scale(1.01);
+
+    box-shadow:
+            0 0 12px rgba(124,77,255,0.2);
 }
 
 /* =========================
@@ -132,9 +252,18 @@ body {
 ========================= */
 
 @keyframes pulse {
-    0% { opacity: 0.4; }
-    50% { opacity: 1; }
-    100% { opacity: 0.4; }
+
+    0% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.4;
+    }
 }
 
 /* =========================
@@ -142,26 +271,48 @@ body {
 ========================= */
 
 .scanBox {
+
     margin-top: 15px;
+
     text-align: center;
 }
 
 .scanner {
+
     width: 100%;
+
     height: 3px;
-    background: linear-gradient(90deg, transparent, #00f5ff, transparent);
+
+    background:
+            linear-gradient(
+                    90deg,
+                    transparent,
+                    #00f5ff,
+                    transparent
+            );
+
     animation: scanMove 1s infinite;
 }
 
 @keyframes scanMove {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 .scanText {
+
     margin-top: 10px;
+
     color: #00f5ff;
+
     font-size: 14px;
+
     animation: pulse 1s infinite;
 }
 
@@ -170,41 +321,71 @@ body {
 ========================= */
 
 .aiResult {
-    border: 1px solid rgba(0,245,255,0.2);
+
+    border:
+            1px solid rgba(0,245,255,0.2);
+
+    box-shadow:
+            0 0 25px rgba(0,245,255,0.1);
 }
 
 /* HEADER */
+
 .aiHeader {
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 }
 
-/* H2 (ONLY AI SECTION SAFE) */
+/* AI TITLE */
+
 .aiResult h2 {
+
     color: #00f5ff;
+
     font-size: 18px;
 }
 
-/* STATUS BADGE */
+/* =========================
+   STATUS BADGE
+========================= */
+
 .statusBadge {
+
     padding: 6px 12px;
+
     border-radius: 20px;
+
     font-size: 12px;
+
     font-weight: bold;
+
     animation: pulse 1.5s infinite;
 }
 
 .statusBadge.safe {
-    background: rgba(0,255,136,0.15);
+
+    background:
+            rgba(0,255,136,0.15);
+
     color: #00ff88;
-    border: 1px solid #00ff88;
+
+    border:
+            1px solid #00ff88;
 }
 
 .statusBadge.danger {
-    background: rgba(255,0,0,0.15);
+
+    background:
+            rgba(255,0,0,0.15);
+
     color: #ff4d4d;
-    border: 1px solid #ff4d4d;
+
+    border:
+            1px solid #ff4d4d;
 }
 
 /* =========================
@@ -212,37 +393,209 @@ body {
 ========================= */
 
 .gaugeWrapper {
+
     display: flex;
+
     justify-content: center;
+
     margin: 20px 0;
 }
 
 .gauge {
-    width: 120px;
-    height: 120px;
+
+    width: 130px;
+
+    height: 130px;
+
     border-radius: 50%;
-    background: conic-gradient(
-            #00ff88 calc(var(--value) * 1%),
-            #1e293b 0
-    );
+
+    background:
+            conic-gradient(
+                    #00ff88 calc(var(--value) * 1%),
+                    #1e293b 0
+            );
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     position: relative;
+
+    box-shadow:
+            0 0 20px rgba(0,245,255,0.2);
 }
 
 .gauge::before {
+
     content: "";
+
     position: absolute;
-    width: 90px;
-    height: 90px;
+
+    width: 95px;
+
+    height: 95px;
+
     background: #0f172a;
+
     border-radius: 50%;
 }
 
 .gaugeText {
+
     position: relative;
-    font-size: 18px;
+
+    font-size: 20px;
+
     font-weight: bold;
+
     color: #00f5ff;
+}
+
+/* =========================
+   AUTH PAGE
+========================= */
+
+.authPage {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.authCard {
+
+    width: 360px;
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    background:
+            rgba(255,255,255,0.05);
+
+    border:
+            1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter:
+            blur(16px);
+
+    box-shadow:
+            0 0 40px rgba(0,245,255,0.12);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.authTitle {
+
+    text-align: center;
+
+    margin: 0;
+
+    font-size: 30px;
+
+    font-weight: bold;
+
+    background:
+            linear-gradient(
+                    90deg,
+                    #00f5ff,
+                    #7c4dff,
+                    #00ff88
+            );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+.authSubtitle {
+
+    text-align: center;
+
+    color: #94a3b8;
+
+    font-size: 14px;
+
+    margin-bottom: 10px;
+}
+
+.authCard input {
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    border:
+            1px solid rgba(255,255,255,0.08);
+
+    background:
+            rgba(255,255,255,0.05);
+
+    color: white;
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+.authCard input:focus {
+
+    border:
+            1px solid #00f5ff;
+
+    box-shadow:
+            0 0 12px rgba(0,245,255,0.25);
+}
+
+.authCard button {
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+            linear-gradient(
+                    135deg,
+                    #00f5ff,
+                    #7c4dff
+            );
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.authCard button:hover {
+
+    transform: scale(1.03);
+
+    box-shadow:
+            0 0 15px rgba(0,245,255,0.3);
+}
+
+.switchAuth {
+
+    text-align: center;
+
+    font-size: 14px;
+
+    color: #00f5ff;
+
+    cursor: pointer;
 }
