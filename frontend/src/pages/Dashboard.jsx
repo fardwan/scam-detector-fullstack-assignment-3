@@ -30,7 +30,7 @@ export default function Dashboard() {
     };
 
     /**
-     * 🗑️ DELETE ACCOUNT (FIXED)
+     * 🗑️ DELETE ACCOUNT (FINAL FIX)
      */
     const handleDeleteAccount = async () => {
         try {
@@ -49,7 +49,7 @@ export default function Dashboard() {
 
             if (!confirmDelete) return;
 
-            // ✅ FIXED: removed /api duplication
+            // ✔ IMPORTANT FIX: NO /api HERE
             await api.delete("/auth/delete", {
                 data: { userId }
             });
